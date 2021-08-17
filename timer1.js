@@ -1,18 +1,15 @@
 
-
 const timer = function(alarmTimes){
-  alarmTimes.sort((a, b) => a - b);
-
-
-  alarmTimes.forEach((element, index) => {
+ 
+  alarmTimes.forEach(element => {
    
-    if( typeof element !== 'number' || element < 0 || alarmTimes.length <= 0) {
-      return false
+    if( !isNaN(element) && element > 0 ) {
+      setTimeout(() => console.log( '\x07' +  'This alarm is for ' + element ), element* 1000);
     }
-    setTimeout(() => console.log( '\x07' +  'This alarm is for ' + element ), element* 1000)
   });
 
 }
 
-timer([5, 'sad', -5, 6, 3])
+const numbers = process.argv.slice(2);
 
+timer(numbers);
